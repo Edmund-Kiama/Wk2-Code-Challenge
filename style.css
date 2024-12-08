@@ -1,0 +1,133 @@
+* {
+    margin: 0;
+}
+
+/* toggles visibility of edit and delete button  */
+.hiddenShown .hidden,
+.popupHidden,
+.clear .hidden {
+    display: none;
+}
+
+body {
+    text-align: center;
+    background-color: antiquewhite;
+    margin-left: 40px;
+    margin-right: 40px;
+    
+}
+
+.mainContent {
+    background-color: rgba(0, 255, 255, 0.176);
+}
+
+/* INPUT SECTION CSS */
+
+#inputSection {
+    padding: 10px;
+    border-bottom: 1px solid rgba(99, 99, 99, 0.627);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#inputSection .input {
+    padding: 10px;
+}
+
+#inputSection h1 {
+    letter-spacing: 1px;
+    font-size: 35px;
+}
+
+.input label {
+    padding: 2px;
+}
+.input input {
+    padding: 5px;
+    background: transparent;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+.inputs button {
+    padding: 5px;
+    width: 50px;
+    font-weight: bold;
+    border-radius: 5px;
+    border: 1px solid black;
+    background: transparent;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.inputs button:hover {
+    font-size: large;
+    padding: 10px;
+    width: 70px;
+    color: white;
+    background: black;
+
+}
+
+/*HIDDEN SHOPPING CONTAINER CSS*/
+
+.hiddenShoppingContainer {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 10px;
+    align-items: center;
+}
+.hiddenShoppingContainer .item {
+    background-color: rgb(65, 155, 65);
+    padding: 10px;
+    margin: 5px;
+    width: 200px;
+    border-radius: 10px ;
+    transition: 0.3s;
+}
+.hiddenShoppingContainer .item:hover {
+    background-color:  rgb(89, 189, 76);
+}
+/* item and price css */
+.hiddenShoppingContainer .item .shopping {
+    padding: 10px;
+}
+/* item only css */
+.hiddenShoppingContainer .item .shopping strong{ 
+    padding: 5px;
+}
+/* date only css */
+.hiddenShoppingContainer .item .check p {
+    color: rgba(0, 0, 0, 0.613);
+    padding-bottom: 5px;
+}
+/* mark checkbox only css  */
+.hiddenShoppingContainer .item .check label {
+    font-size: 10px;
+}
+.hiddenShoppingContainer .item .check input {
+    cursor: pointer;
+}
+/* 3-dot button only ss */
+#showMore {
+    float: right;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+        
+}
+#showMore img {
+    z-index: 1;
+    float: right;
+}
+
+.hiddenPurchasedContainer .item {
+    background-color: red;
+    padding: 10px;
+    margin: 5px;
+}
+
+.clear {
+    background-color: grey;
+    padding: 10px;
+    margin: 5px;
+}
+
+

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Shopping List</title>
+        <!-- Linking css -->
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <section class="mainContent">
+        <!-- Input section -->
+            <section id="inputSection">
+
+                <h1>Shopping List</h1>
+
+                    <!-- form section -->
+                <form id="inputForm">
+                    <div class="inputs">
+
+                        <div class="input">
+                            <label for="itemInput">Item</label>
+                            <input 
+                                type="text" 
+                                placeholder="Enter an item to add"
+                                required
+                                id="itemInput"
+                            >
+                        </div>
+
+                        <div class="input">
+                            <label for="priceInput">Price</label>
+                            <input 
+                                type="number" 
+                                placeholder="Price in Kshs"
+                                required
+                                id="priceInput"    
+                            >
+                        </div>
+
+                        <button type="submit">Add</button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- sections where shopping list items are placed  -->
+            <section class="hiddenShoppingContainer"></section>
+
+            <!-- sections where purchased list items are placed -->
+            <section class="hiddenPurchasedContainer"></section>
+
+            <!-- button section that -->
+            <div class="clear">
+                <button 
+                    class="clearAll"
+                    onclick="clearAll()"
+                    id="clearAll"
+                >
+                    Clear All
+                </button>
+            </div>
+        </section>   
+        <!-- linking js -->
+        <script src="main.js"></script>
+
+    </body>
+</html>
