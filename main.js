@@ -20,14 +20,32 @@ const saveToLocal = () => {
 
             /*CLEAR BUTTON SECTION */
 
-//hides the clear all button
+//hides the clear all button and additional text
 const clearAllButton = () => {
+    //hides the clear all button
     const clearAllHide = document.getElementById("clearAll");
     if (shoppingList.length < 1 && purchasedList.length < 1 ) {
         clearAllHide.classList.add('hidden')
     } else {
         clearAllHide.classList.remove('hidden')
     }
+
+    //Targets shopping total
+    const shoppingHide = document.getElementById("shoppingTotal");
+    //Targets Purchased total
+    const purchasedHide = document.getElementById("purchasedTotal");
+    //Targets Aggregate total
+    const aggregateHide = document.getElementById("aggregateTotal");
+    
+    //hide shopping total
+    shoppingList.length < 1 ? shoppingHide.classList.add('hidden') : shoppingHide.classList.remove('hidden')
+
+    //hides purchased total
+    purchasedList.length < 1 ? purchasedHide.classList.add('hidden') : purchasedHide.classList.remove('hidden')
+    
+    //hides aggregate total
+    shoppingList.length < 1 && purchasedList.length < 1 ? aggregateHide.classList.add('hidden') : aggregateHide.classList.remove('hidden')
+    
 }
 clearAllButton();
 
@@ -44,6 +62,11 @@ clearList.addEventListener('click',() => {
     displayShoppingItems();
     displayPurchasedItems();
     clearAllButton();
+
+    //calculates the total
+    totalPurchasedListPrice(purchasedList);
+    totalShoppingListPrice(shoppingList);
+    totalAggregatePrice( shoppingList, purchasedList);
 })
 
 //From event listener
@@ -67,6 +90,11 @@ form.addEventListener('submit',(event) => {
     saveToLocal();
     displayShoppingItems();
     clearAllButton();
+
+    //calculates the total
+    totalPurchasedListPrice(purchasedList);
+    totalShoppingListPrice(shoppingList);
+    totalAggregatePrice( shoppingList, purchasedList);
 });
 
             /*DISPLAY SECTION */
@@ -125,6 +153,7 @@ const displayShoppingItems = () => {
                                         type="text"
                                         placeholder='Enter new Item'
                                         id="itemEdit-${index}"
+                                        required
                                     >
                                     <br>
                                     <p>Price</p>
@@ -132,6 +161,7 @@ const displayShoppingItems = () => {
                                         type="number" 
                                         placeholder='Enter new price'
                                         id="priceEdit-${index}"
+                                        required
                                     >
                                     <br>
                                     <button class="thatWhichEdits" onclick='editMethod(${index})'>Edit</button>
@@ -208,6 +238,62 @@ const displayPurchasedItems = () => {
 displayShoppingItems();
 displayPurchasedItems();
 
+            /* CALCULATES TOTAL PRICES */
+//For shopping LIst
+const totalShoppingListPrice = (shoppingList) => {
+    //finds the total price in the shopping list
+    let shoppingTotal = shoppingList.reduce((total, oneItem) =>{ 
+        // Changes price to float
+        let price = parseFloat(oneItem.price)
+
+        return total + price;        
+        },0); 
+    //targets and sets the p tag to calculated total price
+    const calculatedTotal = document.getElementById('totalShoppingPrice');
+    calculatedTotal.textContent = `Ksh ${shoppingTotal}`
+}
+
+//for purchased list
+const totalPurchasedListPrice = (purchasedList) => {
+    //finds the total price in the shopping list
+    let purchasedTotal = purchasedList.reduce((total, oneItem) =>{ 
+        // Changes price to float
+        let price = parseFloat(oneItem.price)
+
+        return total + price;        
+        },0); 
+    //targets and sets the p tag to calculated total price
+    const calculatedTotal = document.getElementById('totalPurchasedPrice');
+    calculatedTotal.textContent = `Ksh ${purchasedTotal}`
+}
+
+//for aggregate total
+const totalAggregatePrice = (shoppingList, purchasedList ) => {
+    //finds the total price in the shopping list
+    let purchasedTotal = purchasedList.reduce((total, oneItem) =>{ 
+        // Changes price to float
+        let price = parseFloat(oneItem.price)
+
+        return total + price;        
+        },0); 
+    let shoppingTotal = shoppingList.reduce((total, oneItem) =>{ 
+        // Changes price to float
+        price = parseFloat(oneItem.price)
+
+        return total + price;        
+        },0); 
+    //Adds prices from the two list
+    let aggregateTotal = shoppingTotal + purchasedTotal;
+    //targets and sets the p tag to calculated total price
+    const calculatedTotal = document.getElementById('aggregateTotalPrice');
+    calculatedTotal.textContent = `Ksh ${aggregateTotal}`
+}
+//calculates the total
+totalPurchasedListPrice(purchasedList);
+totalShoppingListPrice(shoppingList);
+totalAggregatePrice( shoppingList, purchasedList);
+
+
             /*3-DOT TOGGLING DELETE AND EDIT BUTTONS */
 
 //function that toggles visibility of edit and delete buttons
@@ -228,15 +314,24 @@ const showMore = (index) => {
 //Deleting Items in shopping List & Purchased List
 const deleteShoppingList = ( index ) => {
     shoppingList.splice(index,1);
+
     saveToLocal();
     displayShoppingItems();
     clearAllButton();
+    //calculates the total
+    totalPurchasedListPrice(purchasedList);
+    totalShoppingListPrice(shoppingList);
+    totalAggregatePrice( shoppingList, purchasedList);
 }
 const deletePurchasedList = ( index ) => {
     purchasedList.splice(index,1);
     saveToLocal();
     displayPurchasedItems();
     clearAllButton();
+    //calculates the total
+    totalPurchasedListPrice(purchasedList);
+    totalShoppingListPrice(shoppingList);
+    totalAggregatePrice( shoppingList, purchasedList);
 }
 
             /*THE EDITING SECTION */
@@ -251,6 +346,12 @@ const togglePurchased = (index) => {
     saveToLocal();
     displayShoppingItems();
     displayPurchasedItems();
+    clearAllButton();
+
+    //calculates the total
+    totalPurchasedListPrice(purchasedList);
+    totalShoppingListPrice(shoppingList);
+    totalAggregatePrice( shoppingList, purchasedList);
 }
 //function that returns an item in purchased list back to shopping list
 const isPurchased = (index) => {
@@ -262,12 +363,23 @@ const isPurchased = (index) => {
     saveToLocal();
     displayShoppingItems();
     displayPurchasedItems();
+    clearAllButton();
+
+    //calculates the total
+    totalPurchasedListPrice(purchasedList);
+    totalShoppingListPrice(shoppingList);
+    totalAggregatePrice( shoppingList, purchasedList);
 }
 //Function that reveals the edit tab
 const editList = ( index ) =>{
     //targets popup container and toggle its visibility
     const editToShowPopup = document.getElementById(`popupContainer-${index}`);
     editToShowPopup.classList.toggle('popupHidden')
+    //hide the initial edit button when the pop up is active
+    if (editToShowPopup) {
+        const hideInitialEdit = document.getElementById(`edit-${index}`)
+        hideInitialEdit.classList.toggle('popupHidden')
+    }
 };
 
 //function that closes the popup
@@ -275,6 +387,11 @@ const closePopup = (index) => {
     //targets popup container and toggle its visibility
     const editToShowPopup = document.getElementById(`popupContainer-${index}`);
     editToShowPopup.classList.toggle('popupHidden')
+    //reveals the initial edit button after the pop up is closed
+    if (editToShowPopup) {
+        const hideInitialEdit = document.getElementById(`edit-${index}`)
+        hideInitialEdit.classList.toggle('popupHidden')
+    }
 }
 
 //function that edits
@@ -293,4 +410,10 @@ const editMethod = (index) => {
     //Updates the DOM
     saveToLocal();
     displayShoppingItems();
+    clearAllButton();
+
+    //calculates the total
+    totalPurchasedListPrice(purchasedList);
+    totalShoppingListPrice(shoppingList);
+    totalAggregatePrice( shoppingList, purchasedList);
 }

@@ -5,7 +5,8 @@
 /* toggles visibility of edit and delete button  */
 .hiddenShown .hidden,
 .popupHidden,
-.clear .hidden {
+.clear .hidden,
+.total .hidden {
     display: none;
 }
 
@@ -256,4 +257,38 @@ input[type="checkbox"] {
     background: black;
 }
 
+/* THE TOTAL 'WORDINGS' SECTION */
+#shoppingTotal,
+#purchasedTotal,
+#aggregateTotal{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin: 10px;
+}
+#aggregateTotal {
+    margin-bottom: 20px;
+}
+#shoppingTotal h3,
+#purchasedTotal h3,
+#aggregateTotal h1 {
+    font-weight: lighter;
+}
+#totalShoppingPrice{
+    font-style: italic;
+    margin-left: 10px;
+    font-size: larger;
+    color: #529401;
+}
+#totalPurchasedPrice{
+    font-style: italic;
+    margin-left: 10px;
+    font-size: larger;
+    color: #DD4B17;
+}
+#aggregateTotalPrice{
+    font-weight: bold;
+    margin-left: 10px;
+    font-size: 25px;
+}
 
