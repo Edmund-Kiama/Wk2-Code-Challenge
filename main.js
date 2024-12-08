@@ -31,21 +31,40 @@ const clearAllButton = () => {
     }
 
     //Targets shopping total
-    const shoppingHide = document.getElementById("shoppingTotal");
+    const shoppingHide = document.getElementById("shoppingTitle");
+    const shoppingPriceHide = document.getElementById("totalShoppingPrice");
     //Targets Purchased total
-    const purchasedHide = document.getElementById("purchasedTotal");
+    const purchasedHide = document.getElementById("purchasedTitle");
+    const purchasedPriceHide = document.getElementById("totalPurchasedPrice");
     //Targets Aggregate total
-    const aggregateHide = document.getElementById("aggregateTotal");
+    const aggregateHide = document.getElementById("aggregateTitle");
+    const aggregatePriceHide = document.getElementById("aggregateTotalPrice");
     
     //hide shopping total
-    shoppingList.length < 1 ? shoppingHide.classList.add('hidden') : shoppingHide.classList.remove('hidden')
-
+    if(shoppingList.length < 1) {
+        shoppingHide.classList.add('hidden') 
+        shoppingPriceHide.classList.add('hidden')
+    } else {
+        shoppingHide.classList.remove('hidden')
+        shoppingPriceHide.classList.remove('hidden')
+    }
     //hides purchased total
-    purchasedList.length < 1 ? purchasedHide.classList.add('hidden') : purchasedHide.classList.remove('hidden')
+    if(purchasedList.length < 1) {
+        purchasedHide.classList.add('hidden') 
+        purchasedPriceHide.classList.add('hidden')
+    } else {
+        purchasedHide.classList.remove('hidden')
+        purchasedPriceHide.classList.remove('hidden')
+    }
     
     //hides aggregate total
-    shoppingList.length < 1 && purchasedList.length < 1 ? aggregateHide.classList.add('hidden') : aggregateHide.classList.remove('hidden')
-    
+    if(shoppingList.length < 1 && purchasedList.length < 1) {
+        aggregateHide.classList.add('hidden') 
+        aggregatePriceHide.classList.add('hidden')
+    } else {
+        aggregateHide.classList.remove('hidden')
+        aggregatePriceHide.classList.remove('hidden')
+    }
 }
 clearAllButton();
 
