@@ -73,8 +73,9 @@ input[type="checkbox"] {
 
 .hiddenShoppingContainer {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
+    gap: 20px;
     padding-bottom: 15px;
     margin-bottom: 15px;
 }
@@ -181,8 +182,8 @@ input[type="checkbox"] {
 
 .hiddenPurchasedContainer {
     display: flex;
-    justify-content: space-evenly;
-    gap: 10px;
+    justify-content: center;
+    gap: 20px;
     align-items: center;
     padding-bottom: 15px;
     margin-bottom: 15px;
