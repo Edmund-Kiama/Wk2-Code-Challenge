@@ -6,6 +6,7 @@ let purchasedList = JSON.parse(localStorage.getItem('purchasedList')) || [];
 
 //Variables
 const form = document.getElementById('inputForm');
+const clearList = document.getElementById('clearAll');
 const hiddenShoppingContainer = document.querySelector('.hiddenShoppingContainer');
 const hiddenPurchasedContainer = document.querySelector('.hiddenPurchasedContainer');
 
@@ -30,8 +31,10 @@ const clearAllButton = () => {
 }
 clearAllButton();
 
+            /*EVENT LISTENER */
+
 //Clearing the whole List
-const clearAll = () => {
+clearList.addEventListener('click',() => {
     //resets all list back to empty lists
     shoppingList = [];
     purchasedList = [];
@@ -41,21 +44,7 @@ const clearAll = () => {
     displayShoppingItems();
     displayPurchasedItems();
     clearAllButton();
-};
-
-            /*DATE SECTION */
-
-//Gets todays date
-const today = new Date();
-const day = today.getDate();
-let monthNames = [
-    "January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"
-]
-const month = monthNames[today.getMonth()];
-const year = today.getFullYear();
-
-            /*EVENT LISTENER */
+})
 
 //From event listener
 form.addEventListener('submit',(event) => {
@@ -97,11 +86,10 @@ const displayShoppingItems = () => {
             </div>
             
             <div class="check">
-                <p>${day} / ${month}/ ${year}</p>
-                <label for="marked-${index}">Mark as purchased</label>
+                <label for="mark-${index}">Mark as purchased</label>
                 <input 
                     type="checkbox" 
-                    id="marked-${index}"
+                    id="mark-${index}"
                     onclick="togglePurchased(${index})"
                 >
             </div>
@@ -115,43 +103,42 @@ const displayShoppingItems = () => {
                     Edit
                     </button>
 
-                     <div id="popupContainer-${index}" class="popupHidden">
-                <div class="popupHeader">
-                    <p>Editing Item</p>
-                    <button 
-                        id="closePopup-${index}"
-                        onclick="closePopup(${index})">
-                            <img 
-                                src="./images/close.png" 
-                                alt="close"
-                                width="3%"
-                            >
-                    </button>
-                </div>
+                    <div id="popupContainer-${index}" class="popupHidden">
+                        <div class="containsPopUp">
+                            <div class="popupHeader">
+                                <p>Editing Item...</p>
+                                <button 
+                                    id="closePopup-${index}"
+                                    onclick="closePopup(${index})"
+                                >
+                                    <img 
+                                        src="./images/close.png" 
+                                        alt="close"
+                                    >
+                                </button>
+                            </div>
 
-                <div id="popupId" >
-                    <div id="editForm">
-                        <p>Item:</p>
-                        <input 
-                            type="text"
-                            placeholder='Enter new Item'
-                            id="itemEdit-${index}"
-                        >
-                        <br>
-                        <p>Price:</p>
-                        <input 
-                            type="number" 
-                            placeholder='Enter new price'
-                            id="priceEdit-${index}"
-                        >
-                        <br>
-                        <button onclick='editMethod(${index})'>Edit</button>
+                            <div id="popupId-${index}" >
+                                <div id="editForm-${index}">
+                                    <p>Item</p>
+                                    <input 
+                                        type="text"
+                                        placeholder='Enter new Item'
+                                        id="itemEdit-${index}"
+                                    >
+                                    <br>
+                                    <p>Price</p>
+                                    <input 
+                                        type="number" 
+                                        placeholder='Enter new price'
+                                        id="priceEdit-${index}"
+                                    >
+                                    <br>
+                                    <button class="thatWhichEdits" onclick='editMethod(${index})'>Edit</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-
-
-
                     <button 
                         id="delete-${index}"
                         class="hidden"
@@ -161,7 +148,7 @@ const displayShoppingItems = () => {
                     </button>
                 </div>
                 
-                <button id="showMore" onclick="showMore(${index})" >
+                <button class="showMore" id="showMore-${index}" onclick="showMore(${index})" >
                     <img src="./images/dots.png" alt="3-dots" width="15px">
                 </button>
                 
@@ -184,12 +171,11 @@ const displayPurchasedItems = () => {
         const itemPurchasedCard = `
         <div class="item">
             <div id="${index}">
-                <p><strong>${item.name}</strong></p>
-                <p><em>Kshs ${item.price}</em></p>
+                <p><strong><s>${item.name}</s></strong></p>
+                <p><em><s>Kshs ${item.price}</s></em></p>
             </div>
             
             <div class="check">
-                <p>${day} / ${month}/ ${year}</p>
                 <label for="marked-${index}">Remove from purchased</label>
                 <input 
                     type="checkbox" 

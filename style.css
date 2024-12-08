@@ -11,20 +11,18 @@
 
 body {
     text-align: center;
-    background-color: antiquewhite;
     margin-left: 40px;
     margin-right: 40px;
     
 }
 
-.mainContent {
-    background-color: rgba(0, 255, 255, 0.176);
-}
 
 /* INPUT SECTION CSS */
 
 #inputSection {
     padding: 10px;
+    padding-bottom: 15px;
+    margin-bottom: 10px;
     border-bottom: 1px solid rgba(99, 99, 99, 0.627);
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -44,7 +42,7 @@ body {
 .input input {
     padding: 5px;
     background: transparent;
-    border: 1px solid black;
+    border: 1px solid rgba(99, 99, 99, 0.627);
     border-radius: 5px;
 }
 .inputs button {
@@ -63,7 +61,11 @@ body {
     width: 70px;
     color: white;
     background: black;
-
+}
+input[type="checkbox"] {
+    accent-color: black;
+    width: 12px;
+    height: 12px;
 }
 
 /*HIDDEN SHOPPING CONTAINER CSS*/
@@ -73,17 +75,23 @@ body {
     justify-content: space-evenly;
     gap: 10px;
     align-items: center;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
 }
 .hiddenShoppingContainer .item {
-    background-color: rgb(65, 155, 65);
+    border: 2px solid  rgba(99, 99, 99, 0.409);
     padding: 10px;
     margin: 5px;
     width: 200px;
     border-radius: 10px ;
-    transition: 0.3s;
+    background: transparent;
+    transition: 0.2s;
+    color: rgb(98, 98, 98);
 }
 .hiddenShoppingContainer .item:hover {
-    background-color:  rgb(89, 189, 76);
+    color: black;
+    background-color: rgba(239, 239, 239, 0.844);
+    
 }
 /* item and price css */
 .hiddenShoppingContainer .item .shopping {
@@ -93,11 +101,6 @@ body {
 .hiddenShoppingContainer .item .shopping strong{ 
     padding: 5px;
 }
-/* date only css */
-.hiddenShoppingContainer .item .check p {
-    color: rgba(0, 0, 0, 0.613);
-    padding-bottom: 5px;
-}
 /* mark checkbox only css  */
 .hiddenShoppingContainer .item .check label {
     font-size: 10px;
@@ -106,28 +109,151 @@ body {
     cursor: pointer;
 }
 /* 3-dot button only ss */
-#showMore {
+.showMore {
     float: right;
     background: transparent;
     border: none;
+    cursor: pointer;       
+}  
+/* delete button and edit button */
+.hiddenShoppingContainer .item .hiddenShown button {
+    margin: 5px;
+    width: 45px;
+    height: 20px;
+    font-size: 12px;
+    border-radius: 5px;
+    border: 1px solid black;
+    background:transparent;
+    transition: 0.2s;
     cursor: pointer;
-        
 }
-#showMore img {
-    z-index: 1;
+.hiddenShoppingContainer .item .hiddenShown button:first-child:hover {
+    background:#8CE917;
+    font-weight: bold;
+}
+.hiddenShoppingContainer .item .hiddenShown button:nth-child(3):hover,
+.hiddenShoppingContainer .item .hiddenShown button:nth-child(2):hover {
+    background:#DD4B17;
+    font-weight: bold;
+}
+.hiddenShoppingContainer .item .hiddenShown .thatWhichEdits:hover {
+    background:black;
+    font-weight: bold;
+    color: white;
+}
+
+/*editing section  */
+.containsPopUp {
+    background-color: rgba(0, 0, 0, 0.159);
+    padding: 5px;
+    border-radius: 3px;
+    border: 1px solid rgb(145, 145, 145);
+}
+.hiddenShoppingContainer .item .popupHeader {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.309);
+}
+.hiddenShoppingContainer .item .popupHeader p {
+    float: left;
+    margin-top: 5px;
+}
+.hiddenShoppingContainer .item .popupHeader button {
     float: right;
+    padding: 1px;
+    width: 20px;
+    height: 20px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+.hiddenShoppingContainer .item .popupHeader button img {
+    width: 15px;
+}
+.containsPopUp input {
+     padding: 5px;
+    background: transparent;
+    border: 1px solid rgb(99, 99, 99);
+    border-radius: 5px;
 }
 
+/*HIDDEN PURCHASED CONTAINER CSS*/
+
+.hiddenPurchasedContainer {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 10px;
+    align-items: center;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
 .hiddenPurchasedContainer .item {
-    background-color: red;
+    border: 2px solid rgba(99, 99, 99, 0.627);
+    background-color:  rgba(0, 0, 0, 0.75);;
     padding: 10px;
     margin: 5px;
+    width: 200px;
+    border-radius: 10px ;
+    color: rgba(229, 229, 229, 0.785);
+    transition: 0.2s;
+}
+.hiddenPurchasedContainer .item:hover {
+    background-color: black;
+    color: white;
+}
+/* item and price css */
+.hiddenPurchasedContainer .item .shopping {
+    padding: 10px;
+}
+/* item only css */
+.hiddenPurchasedContainer .item .shopping strong{ 
+    padding: 5px;
+}
+/* mark checkbox only css  */
+.hiddenPurchasedContainer .item .check label {
+    font-size: 10px;
+}
+.hiddenPurchasedContainer .item .check input {
+    cursor: pointer;
 }
 
-.clear {
-    background-color: grey;
+.hiddenPurchasedContainer .item .shown {
+    margin-top: 5px;
+    width: 45px;
+    height: 20px;
+    font-size: 12px;
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.842);
+    background:transparent;
+    color: rgba(255, 255, 255, 0.864);
+    transition: 0.2s;
+    cursor: pointer;
+}
+.hiddenPurchasedContainer .item .shown:hover {
+    color: black;
+    background: #DD4B17;
+    font-weight: bold;
+    border: 1px solid #DD4B17;
+}
+
+/* CLEAR ALL SECTION  */
+
+.clear button {
+    padding: 5px;
+    width: 100px;
+    font-weight: bold;
+    border-radius: 5px;
+    border: 1px solid black;
+    background: transparent;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.clear button:hover {
+    font-size: large;
     padding: 10px;
-    margin: 5px;
+    width: 200px;
+    color: white;
+    background: black;
 }
 
 
