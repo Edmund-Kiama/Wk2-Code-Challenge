@@ -178,6 +178,7 @@ const displayShoppingItems = () => {
                                     <p>Price</p>
                                     <input 
                                         type="number" 
+                                        step ="any"
                                         placeholder='Enter new price'
                                         id="priceEdit-${index}"
                                         required
@@ -269,7 +270,7 @@ const totalShoppingListPrice = (shoppingList) => {
         },0); 
     //targets and sets the p tag to calculated total price
     const calculatedTotal = document.getElementById('totalShoppingPrice');
-    calculatedTotal.textContent = `Ksh ${shoppingTotal}`
+    calculatedTotal.textContent = `Ksh ${shoppingTotal.toFixed(2)}`
 }
 
 //for purchased list
@@ -283,7 +284,7 @@ const totalPurchasedListPrice = (purchasedList) => {
         },0); 
     //targets and sets the p tag to calculated total price
     const calculatedTotal = document.getElementById('totalPurchasedPrice');
-    calculatedTotal.textContent = `Ksh ${purchasedTotal}`
+    calculatedTotal.textContent = `Ksh ${purchasedTotal.toFixed(2)}`
 }
 
 //for aggregate total
@@ -305,7 +306,7 @@ const totalAggregatePrice = (shoppingList, purchasedList ) => {
     let aggregateTotal = shoppingTotal + purchasedTotal;
     //targets and sets the p tag to calculated total price
     const calculatedTotal = document.getElementById('aggregateTotalPrice');
-    calculatedTotal.textContent = `Ksh ${aggregateTotal}`
+    calculatedTotal.textContent = `Ksh ${aggregateTotal.toFixed(2)}`
 }
 //calculates the total
 totalPurchasedListPrice(purchasedList);
