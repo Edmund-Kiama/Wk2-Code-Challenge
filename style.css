@@ -42,7 +42,7 @@ body {
 }
 .input input {
     padding: 5px;
-    background: transparent;
+    background: white;
     border: 1px solid rgba(99, 99, 99, 0.627);
     border-radius: 5px;
 }
