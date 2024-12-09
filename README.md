@@ -65,6 +65,9 @@ Event Listeners
 Popup Editing
 ---> A popup form allows the users to edit item details, maintaining an organized UI.
 
+Changes the dark and light mode
+---> The user can change their modes from light to dark and vice versa.
+
 ## Customization
 
 Styling---> You can modify the style.css file to customize the appearance.

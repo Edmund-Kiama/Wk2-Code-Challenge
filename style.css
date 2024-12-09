@@ -52,7 +52,7 @@ body {
     font-weight: bold;
     border-radius: 5px;
     border: 1px solid black;
-    background: transparent;
+    background: white;
     transition: 0.3s;
     cursor: pointer;
 }
@@ -125,7 +125,7 @@ input[type="checkbox"] {
     font-size: 12px;
     border-radius: 5px;
     border: 1px solid black;
-    background:transparent;
+    background:white;
     transition: 0.2s;
     cursor: pointer;
 }
@@ -247,7 +247,7 @@ input[type="checkbox"] {
     font-weight: bold;
     border-radius: 5px;
     border: 1px solid black;
-    background: transparent;
+    background: white;
     transition: 0.3s;
     cursor: pointer;
 }
@@ -293,4 +293,17 @@ input[type="checkbox"] {
     margin-left: 10px;
     font-size: 25px;
 }
-
+/* Dark mode  */
+#toggleDark {
+    background: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 100px;
+    float: right;
+    cursor: pointer;
+    margin: 5px;
+}
+#toggleDark img {
+    width: 30px;
+}

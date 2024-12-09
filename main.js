@@ -9,6 +9,8 @@ const form = document.getElementById('inputForm');
 const clearList = document.getElementById('clearAll');
 const hiddenShoppingContainer = document.querySelector('.hiddenShoppingContainer');
 const hiddenPurchasedContainer = document.querySelector('.hiddenPurchasedContainer');
+const toggle = document.getElementById('toggleDark');
+const body = document.querySelector('body');
 
                 /*LOCAL STORAGE SECTION */
 
@@ -70,6 +72,24 @@ clearAllButton();
 
             /*EVENT LISTENER */
 
+            //Ensures that the theme is loaded from Local Storage
+document.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+        body.style.background ='white';
+        body.style.color ='black';
+        body.style.transition ='2s';
+        toggle.classList.add('lightMode');
+        toggle.classList.remove('darkMode');
+    } else if (savedTheme === 'dark') {
+        body.style.background ='black';
+        body.style.color ='white';
+        body.style.transition ='2s'; 
+        toggle.classList.add('darkMode');
+        toggle.classList.remove('lightMode');
+    }
+});
+
 //Clearing the whole List
 clearList.addEventListener('click',() => {
     //resets all list back to empty lists
@@ -115,6 +135,26 @@ form.addEventListener('submit',(event) => {
     totalShoppingListPrice(shoppingList);
     totalAggregatePrice( shoppingList, purchasedList);
 });
+
+//Dark and Light mode
+toggle.addEventListener('click',function(){
+    this.classList.toggle('darkMode')
+    if(this.classList.toggle('lightMode')){
+        body.style.background ='white';
+        body.style.color ='black';
+        body.style.transition ='2s';
+        //saving to Local Storage
+        localStorage.setItem('theme', 'light'); 
+
+    } else{
+        body.style.background ='black';
+        body.style.color ='white';
+        body.style.transition ='2s';   
+        //saving to Local Storage
+        localStorage.setItem('theme', 'dark');
+    }
+});
+
 
             /*DISPLAY SECTION */
 
