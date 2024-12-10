@@ -134,7 +134,6 @@ form.addEventListener('submit',(event) => {
 
 //Dark and Light mode
 toggle.addEventListener('click',function(){
-    this.classList.toggle('darkMode')
     if(this.classList.toggle('lightMode')){
         body.style.background ='white';
         body.style.color ='black';
