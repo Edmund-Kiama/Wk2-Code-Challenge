@@ -79,14 +79,10 @@ document.addEventListener('DOMContentLoaded', () => {
         body.style.background ='white';
         body.style.color ='black';
         body.style.transition ='2s';
-        toggle.classList.add('lightMode');
-        toggle.classList.remove('darkMode');
     } else if (savedTheme === 'dark') {
         body.style.background ='black';
         body.style.color ='white';
         body.style.transition ='2s'; 
-        toggle.classList.add('darkMode');
-        toggle.classList.remove('lightMode');
     }
 });
 
