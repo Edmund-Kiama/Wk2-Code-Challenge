@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
         body.style.color ='black';
         body.style.transition ='2s';
     } else if (savedTheme === 'dark') {
-        body.style.background ='black';
+        body.style.background ='#1A202C';
         body.style.color ='white';
         body.style.transition ='2s'; 
     }
